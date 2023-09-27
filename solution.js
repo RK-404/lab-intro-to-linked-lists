@@ -70,22 +70,21 @@ class LinkedList {
   }
 
   getKth(k) {
-    let current = this.head;
-    for (let i = 1; i < k; i++) {
-      if (current.next) {
-        current = current.next;
-      }
-      else return undefined;
+    let node = this.head;
+    let nodeCount = 1;
+    while (node && nodeCount !== k) {
+      nodeCount++;
+      node = node.next;
     }
-    return current;
+    return node;
   }
 
-  getKthToLast (k) {
+  getKthToLast(k) {
     return this.getKth(this.size() - k);
   }
 
   isEmpty() {
-    return !this.head ? true : false;
+    return !this.head;
   }
 
   clear() {
